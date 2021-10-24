@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
       attributes: ["id", "nombre", "id_materia"],
       
       /////////se agrega la asociacion 
-      // include:[{as:'Materia-Relacionada', model:models.materia, attributes: ["id","nombre", "id_carrera"]}]
+       include:[{as:'Materia-Relacionada', model:models.materia, attributes: ["id","nombre", "id_carrera"]}]
       ////////////////////////////////
 
     })
