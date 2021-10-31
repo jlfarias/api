@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
       attributes: ["id", "nombre", "id_carrera"],
     
       /////////se agrega la asociacion 
-        include:[{as:'Carrera-Relacionada', model:models.carrera, attributes: ["id","nombre"]}]
+        include:[{as:'Alumno-Relacionado', model:models.carrera, attributes: ["id","nombre"]}]
       ////////////////////////////////
     
     }).then(alumno => res.send(alumno))
