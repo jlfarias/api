@@ -6,13 +6,14 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   profesor.associate = function(models) {
     // associations can be defined here
-      	//asociacion a carrera (pertenece a:)
-      /**/
+
+      /* belongTo: la clave para la asociacion existe en el modelo de origen */
         profesor.belongsTo(models.materia// modelo al que pertenece
           ,{
             as : 'Materia-Relacionada',  // nombre de mi relacion
-            foreignKey: 'id_materia'     // campo con el que voy a igualar
+            foreignKey: 'id'     // campo con el que voy a igualar
           })
+    
           /////////////////////
       
   };
