@@ -14,7 +14,7 @@ module.exports = {
       id_carrera: {
         type: Sequelize.INTEGER
       },
-      createdAt: {
+         createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
