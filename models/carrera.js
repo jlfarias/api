@@ -4,14 +4,11 @@ module.exports = (sequelize, DataTypes) => {
     nombre: DataTypes.STRING
   }, {});
   
-    /**/
-  //codigo de asociacion  (tiene muchos:)
-
+  //codigo de asociacion
   carrera.associate = function(models) {
-
   	carrera.hasMany(models.materia,         // Modelo al que pertenece
     {
-      as: 'Carrera-Relacionada',            // nombre de mi relacion
+      as: 'Materia-Relacionada',            // nombre de mi relacion
       primaryKey: 'id'                      // campo con el que voy a igualar 
     })
 
@@ -20,7 +17,6 @@ module.exports = (sequelize, DataTypes) => {
       as: 'Alumno-Relacionado',             // nombre de mi relacion
       primaryKey: 'id'                      // campo con el que voy a igualar 
     })
-
 
   };
   ///////////////////////
