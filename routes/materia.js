@@ -2,19 +2,23 @@ var express = require("express");
 var router = express.Router();
 var models = require("../models");
 
+
 // GET
 router.get("/", (req, res) => {
   console.log("Esto es un mensaje para ver en consola");
- 
-  models.materia
-    .findAll({
-      attributes: ["id", "nombre", "id_carrera"],
-    
-      /////////se agrega la asociacion 
-        include:[{as:'Carrera-Relacionada', model:models.carrera, attributes: ["id","nombre"]}],
-        //    include:[{as:'Profesor-Relacionado', model:models.carrera, attributes: ["id","nombre"]}],
+  const paginaActual = parseInt(req.query.numeroDePagina);
+  const limite = parseInt(req.query.limitePorPag);
 
-    }).then(materia => res.send(materia))
+  models.materia.findAll({
+    attributes: ["id", "nombre", "id_carrera", "id_profesor"],
+    ///////// se agregan las asociaciones
+    include:[{as:'Carrera-Relacionada', model:models.carrera, attributes: ["id","nombre"]},
+    {as:'Profesor-Relacionado', model:models.profesor, attributes: ["id","nombre"]}],
+    ///////// paginación
+    offset: (paginaActual-1) * limite,
+    limit: limite
+    })
+    .then(materias => res.send(materias))
     .catch(() => res.sendStatus(500));
 });
 

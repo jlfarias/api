@@ -5,14 +5,16 @@ var models = require("../models");
 // GET
 router.get("/", (req, res) => {
   console.log("Esto es un mensaje para ver en consola");
+  const paginaActual = parseInt(req.query.numeroDePagina);
+  const limite = parseInt(req.query.limitePorPag);
   models.alumno
     .findAll({
       attributes: ["id", "nombre", "id_carrera"],
-    
       /////////se agrega la asociacion 
-        include:[{as:'Alumno-Relacionado', model:models.carrera, attributes: ["id","nombre"]}]
-      ////////////////////////////////
-    
+        include:[{as:'Alumno-Relacionado', model:models.carrera, attributes: ["id","nombre"]}],
+      //////////////////////////////
+      offset: (paginaActual-1) * limite,
+      limit: limite
     }).then(alumno => res.send(alumno))
     .catch(() => res.sendStatus(500));
 });
