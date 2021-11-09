@@ -18,9 +18,14 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: 'id'                      // campo con el que voy a igualar 
     })
 
-  };
-  ///////////////////////
+    /*
+    carrera.belongsTo(models.facultad,
+      {
+        as:'Facultad-Relacionada',
+        primaryKey: 'id'
+    }) */
 
+  };
  
   return carrera;
 };
