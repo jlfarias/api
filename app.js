@@ -3,10 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+
 var carrerasRouter = require('./routes/carreras');
-var materiaRouter = require('./routes/materia');
-var alumnoRouter = require('./routes/alumno');
-var profesorRouter = require('./routes/profesor');
+var materiaRouter = require('./routes/materias');
+var alumnoRouter = require('./routes/alumnos');
+var profesorRouter = require('./routes/profesores');
+var facultadesRouter = require('./routes/facultades');
+var notasRouter = require('./routes/notas');
 
 var app = express();
 
@@ -24,6 +27,8 @@ app.use('/car', carrerasRouter);
 app.use('/mat', materiaRouter);
 app.use('/alu', alumnoRouter);
 app.use('/prof', profesorRouter);
+app.use('/fac', facultadesRouter);
+app.use('/not', notasRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
